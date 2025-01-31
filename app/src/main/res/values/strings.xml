@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Gestión almacén</string>
+    <string name="app_name">Gestión Almacén</string>
 
 
 <!-- Ventana de acceso  -->
     <string name="acceso_layout">Acceso</string>
     <string name="userEmail">Correo electrónico</string>
     <string name="userPassword">Contraseña</string>
-    <string name="olvidarPassword_lbl">He olvidado mi contraseña</string>
-    <string name="crearCienta_lbl">Crear cuenta</string>
-    <string name="iniciarSesion_lbl">Iniciar sesión</string>
-    <string name="iniciarSesionCon_lbl">Iniciar sesión con</string>
+    <string name="recordarPassword">He olvidado mi contraseña</string>
+    <string name="crearCuenta">Crear cuenta</string>
+    <string name="iniciarSesion">Iniciar sesión</string>
+    <string name="iniciarSesionCon">Iniciar sesión con</string>
 
 <!-- Ventana de Crear cuenta  -->
     <string name="crearCuenta_layout">Crear cuenta de usuario</string>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/colorRipple"> <!-- Color del efecto de pulsado -->
+
+    <!-- Fondo del botón -->
+    <item>
+        <shape>
+            <solid android:color="@color/white"/> <!-- Color de fondo normal del botón -->
+            <corners android:radius="8dp"/> <!-- Esquinas redondeadas -->
+        </shape>
+    </item>
+</ripple>
