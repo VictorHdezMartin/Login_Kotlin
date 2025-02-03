@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/UserCreate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.UserLoginActivity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@color/indigo"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/crearCuenta"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userEmailCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:hint="@string/userEmail"
+        app:boxBackgroundColor="@color/amarilloFlojo"
+        app:startIconDrawable="@drawable/icono_email"
+        app:startIconTint="@null">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userPasswordCreate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:layout_marginLeft="20dp"
+            android:hint="@string/userPassword"
+            app:boxBackgroundColor="@color/amarilloFlojo"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/icono_password"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                app:boxBackgroundColor="@color/amarilloFlojo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            style="?attr/materialIconButtonStyle"
+            android:id="@+id/InfPassword1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/icono_question"
+            app:iconSize="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userPasswordRepeat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:layout_marginLeft="20dp"
+            android:hint="@string/userPasswordRepetir"
+            app:boxBackgroundColor="@color/amarilloFlojo"
+            app:counterEnabled="true"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/icono_password"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                app:boxBackgroundColor="@color/amarilloFlojo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            style="?attr/materialIconButtonStyle"
+            android:id="@+id/InfPassword2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/icono_question"
+            app:iconSize="30dp"/>
+    </LinearLayout>
+
+
+<!--  DATOS PERSONALES -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="30dp"
+        android:background="@color/indigo"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="@string/crearCuenta"
+        android:textSize="14sp"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:hint="@string/userNombre"
+        app:boxBackgroundColor="@color/amarilloFlojo"
+        app:startIconDrawable="@drawable/icono_email"
+        app:startIconTint="@null">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:hint="@string/userApellidos"
+        app:boxBackgroundColor="@color/amarilloFlojo"
+        app:startIconDrawable="@drawable/icono_email"
+        app:startIconTint="@null">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                style="?attr/materialIconButtonStyle"
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:icon="@drawable/icono_calendario"
+                app:iconSize="50dp"
+                app:iconTint="@null"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userNacimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha nacimiento"
+                android:clickable="false"
+                android:focusable="false"
+                android:enabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <Button
+                style="?attr/materialIconButtonStyle"
+                android:id="@+id/userImagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/icono_folder"
+                app:iconTint="@null"
+                app:iconSize="50dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/amarilloFlojo">
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/CrearCuenta"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="120dp"
+        android:background="@drawable/button_background"
+        android:text="@string/crearCuenta"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:icon="@drawable/icono_crearcuenta"
+        app:iconGravity="start"
+        app:iconSize="30dp"
+        app:iconTint="@null" />
+
+</LinearLayout>

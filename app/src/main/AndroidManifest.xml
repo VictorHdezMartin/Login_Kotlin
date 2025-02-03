@@ -16,7 +16,10 @@
         android:theme="@style/Theme.Login_Kotlin"
         tools:targetApi="31">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.UserCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UserLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
