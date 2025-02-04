@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+// Kotlin Reflexion
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")
+
 // dependencia filament
     implementation(libs.filament.android)        // hay que copiarlo fichero: 'libs.versions.toml' -> filament-android = { group = "com.google.ar.sceneform", name = "filament-android", version.ref = "filamentAndroid" }
                                                  // para trabajar con gráficos 3D en Android

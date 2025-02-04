@@ -14,10 +14,14 @@
     <!-- Ventana de Crear cuenta  -->
     <string name="crearCuenta_layout">Crear usuario</string>
     <string name="userPasswordRepetir">repetir contraseña</string>
+    <string name="userDatosPersonales">Datos personales</string>
     <string name="userNombre">nombre</string>
     <string name="userApellidos">apellidos</string>
     <string name="userTelefono">teléfono</string>
-
+    <string name="userImagen">Imagen de perfil</string>
+    <string name="userHombre">Hombre</string>
+    <string name="userMujer">Mujer</string>
+    <string name="userNoProcede">No procede</string>
 
 
     <!-- Ventana de Verificar cuenta  -->

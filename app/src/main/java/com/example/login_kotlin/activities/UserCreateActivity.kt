@@ -1,12 +1,16 @@
 package com.example.login_kotlin.activities
 
 import android.app.DatePickerDialog
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,6 +22,12 @@ import java.util.Locale
 class UserCreateActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityUsercreateBinding
+
+    private val FILE_REQUEST_CODE = 1001
+ // Definir el ActivityResultLauncher para manejar el resultado del selector de archivos
+    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let { loadImageIntoImageView(it) }
+    }
 
     private val calendar = Calendar.getInstance()                                                   // nos hace falta para instanciar el DATAPICKER
 
@@ -39,26 +49,52 @@ class UserCreateActivity : AppCompatActivity() {
         binding.userPasswordRepeat.counterMaxLength = maxPassword
         binding.userPasswordRepeat.editText!!.filters = arrayOf(InputFilter.LengthFilter(maxPassword))
 
+        binding.datePicker.setOnClickListener {
+            showDatePicker(binding.userNacimiento.editText)
+        }
+
+        binding.openExplorer.setOnClickListener {
+            openFileExplorer()
+        }
+
+        binding.userHombre.setOnClickListener {
+
+        }
+
+        binding.userMujer.setOnClickListener {
+
+        }
+
+        binding.userNoProcede.setOnClickListener {
+
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-       binding.datePicker.setOnClickListener{
-
-           showDatePicker(binding.userNacimiento.editText)
-
-
-       }
-
-
     }
 
+// Función para abrir el explorador de archivos y elegir una imagen
+    private fun openFileExplorer() {
+        getContent.launch("image/*") // solo imagenes
+}
 
+// Metodo para cargar la imagen en el ImageView usando la URI
+    private fun loadImageIntoImageView(uri: Uri) {
+        try {
+            val inputStream = contentResolver.openInputStream(uri)  // Obtener un InputStream de la URI
+            val bitmap = BitmapFactory.decodeStream(inputStream)    // Decodificar la imagen a Bitmap
+            binding.userImagen.setImageBitmap(bitmap)               // Establecer la imagen en el ImageView  <- cargamos la imagen
+            inputStream?.close()                                    // Cerrar el InputStream
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
+        }
+    }
 
-
-    // Funcion para generar un DATEPICKER desde código ------------------------------------------------
+// Funcion para generar un DATEPICKER desde código ------------------------------------------------
     private fun showDatePicker(vista: View?) {
         var hora: String
         val datePickerDialog = DatePickerDialog(
