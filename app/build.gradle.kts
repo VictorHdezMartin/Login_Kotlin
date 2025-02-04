@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+ // Add the dependency for the Google services Gradle plugin
+ //   id("com.google.gms.google-services") version "4.4.2" apply false
+
 }
 
 android {
@@ -41,12 +45,17 @@ android {
 
 dependencies {
 
+// dependencias de FireBase
+ //   implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
+  //  implementation("com.google.firebase:firebase-analytics")
+
 // Kotlin Reflexion
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")
 
 // dependencia filament
-    implementation(libs.filament.android)        // hay que copiarlo fichero: 'libs.versions.toml' -> filament-android = { group = "com.google.ar.sceneform", name = "filament-android", version.ref = "filamentAndroid" }
-                                                 // para trabajar con gráficos 3D en Android
+    implementation(libs.filament.android)
+    implementation(libs.places)        // hay que copiarlo fichero: 'libs.versions.toml' -> filament-android = { group = "com.google.ar.sceneform", name = "filament-android", version.ref = "filamentAndroid" }
+                                       // para trabajar con gráficos 3D en Android
 
 // dependencias RETROFIT
     val retroFitVersion = "2.11.0"

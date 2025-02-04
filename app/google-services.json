@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1056468059363",
+    "project_id": "almacen-ios",
+    "storage_bucket": "almacen-ios.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056468059363:android:5bfdf0a9dd2c5f730bb1d6",
+        "android_client_info": {
+          "package_name": "com.example.login_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056468059363-cu5v2vngag9hfv653i7g1l83ec5k0fjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7iFrunkzAt1I4KywWPLdDGA7HIsK2gBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056468059363-cu5v2vngag9hfv653i7g1l83ec5k0fjn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1056468059363-ktjtunlc51nelmmn8ffvg0326tthnegq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.Almacen-IOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

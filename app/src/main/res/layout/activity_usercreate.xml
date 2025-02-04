@@ -185,7 +185,8 @@
 
 <!-- User Género -->
         <RadioGroup
-            android:checkedButton="@+id/userGenero"
+            android:id="@+id/userGenero"
+            android:checkedButton="@+id/userHombre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -235,7 +236,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 <!-- Botón DatePicker -->
