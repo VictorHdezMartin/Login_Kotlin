@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Gestión Almacén</string>
 
-
-    <!-- Ventana de acceso  -->
+<!-- Ventana de acceso  -->
     <string name="acceso_layout">Acceso</string>
     <string name="userEmail">correo electrónico</string>
     <string name="userPassword">contraseña</string>
@@ -11,7 +10,7 @@
     <string name="iniciarSesion">Iniciar sesión</string>
     <string name="iniciarSesionCon">Iniciar sesión con</string>
 
-    <!-- Ventana de Crear cuenta  -->
+<!-- Ventana de Crear cuenta  -->
     <string name="crearCuenta_layout">Crear usuario</string>
     <string name="userPasswordRepetir">repetir contraseña</string>
     <string name="userDatosPersonales">Datos personales</string>
@@ -24,19 +23,19 @@
     <string name="userNoProcede">No procede</string>
 
 
-    <!-- Ventana de Verificar cuenta  -->
+<!-- Ventana de Verificar cuenta  -->
     <string name="verificarCuenta_layout">Verificación de cuenta</string>
 
 
-    <!-- Ventana de Categorías  -->
+<!-- Ventana de Categorías  -->
     <string name="categorias_layout">Categorías</string>
 
 
-    <!-- Ventana de Productos  -->
+<!-- Ventana de Productos  -->
     <string name="productos_layout">Productos</string>
 
 
-    <!-- Ventana de Articulo  -->
+<!-- Ventana de Articulo  -->
     <string name="articulo_layout">Artículo</string>
 
 
