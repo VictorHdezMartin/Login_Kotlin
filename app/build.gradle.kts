@@ -2,9 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
- // Add the dependency for the Google services Gradle plugin
- //   id("com.google.gms.google-services") version "4.4.2" apply false
-
+    id("com.google.gms.google-services")  // Para integrar Firebase
 }
 
 android {
@@ -34,20 +32,30 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
 }
 
 dependencies {
 
 // dependencias de FireBase
- //   implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
-  //  implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-bom:33.8.0")           // Import the BoM for the Firebase platform
+    implementation("com.google.firebase:firebase-core:21.1.0")           // Firebase Core (Obligatorio para usar Firebase)
+    implementation("com.google.firebase:firebase-analytics-ktx:21.0.0")  // Firebase Analytics
+    implementation("com.google.firebase:firebase-auth-ktx:21.1.0")       // Firebase Authentication
+    implementation("com.google.firebase:firebase-firestore-ktx:24.6.0")  // Firebase Firestore
+
+// dependencias de Google Sign-In (para integración con Google)
+    implementation("com.google.android.gms:play-services-auth:21.3.0")   // Google Sign-In (para integración con Google)
+    implementation("com.google.firebase:firebase-auth:21.1.0")           // Firebase Authentication (Google Sign-In requiere esta dependencia)
 
 // Kotlin Reflexion
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")

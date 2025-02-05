@@ -5,9 +5,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
-import android.view.View
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,16 +14,20 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.login_kotlin.R
 import com.example.login_kotlin.databinding.ActivityUsercreateBinding
-import java.text.SimpleDateFormat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
-import java.util.Locale
 
 class UserCreateActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityUsercreateBinding
+    private lateinit var binding: ActivityUsercreateBinding
+    private lateinit var db: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     private val FILE_REQUEST_CODE = 1001                            // para poder acceder a ficheros
 
@@ -34,14 +36,14 @@ class UserCreateActivity : AppCompatActivity() {
         uri?.let { loadImageIntoImageView(it) }
     }
 
-    private val calendar = Calendar.getInstance()                                                   // nos hace falta para instanciar el DATAPICKER
-
-    val minPassword = 6
-    val maxPassword = 20
+    private val maxPassword = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        db = Firebase.firestore                                         // Inicializar Firestore
+        auth = FirebaseAuth.getInstance()                               // Inicializar Firebase Auth
 
         binding = ActivityUsercreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -61,7 +63,7 @@ class UserCreateActivity : AppCompatActivity() {
             userNacimiento.editText!!.textSize = 12F
 
             datePicker.setOnClickListener {
-                ShowDatePicker()
+                ShowDatePicker(userNacimiento.editText!!)
             }
 
             openExplorer.setOnClickListener {
@@ -118,7 +120,7 @@ class UserCreateActivity : AppCompatActivity() {
 
 // Mostrar el DatePicker ---------------------------------------------------------------------------
 
-    private fun ShowDatePicker() {
+    private fun ShowDatePicker(fecha: EditText) {
 
      // Obtén la fecha actual y calcula la fecha mínima (18 años atrás)
         val minAgeDate = Calendar.getInstance() // Fecha mínima: 18 años atrás
@@ -141,8 +143,8 @@ class UserCreateActivity : AppCompatActivity() {
                 val formattedDate = selectedDate.format(formatter)
 
             // Pasar la fecha al EditText
-                binding.userNacimiento.editText!!.textSize = 16F
-                binding.userNacimiento.editText!!.setText(formattedDate)
+                fecha.textSize = 16F
+                fecha.setText(formattedDate)
             },
             year, month, dayOfMonth
         )
