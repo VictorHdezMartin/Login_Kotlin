@@ -10,18 +10,22 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import com.example.login_kotlin.databinding.ActivityUserloginBinding
-import com.example.login_kotlin.utils.AlertDialogConstants
 import com.example.login_kotlin.utils.DialogShow
+import com.example.login_kotlin.utils.GoogleSingIn
 import com.example.login_kotlin.utils.isValidEmail
 import com.example.login_kotlin.utils.isValidPassword
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class UserLoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityUserloginBinding
+    private lateinit var googleSingIn: GoogleSingIn
 
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
@@ -35,6 +39,8 @@ class UserLoginActivity : AppCompatActivity() {
 
         db = Firebase.firestore                                                                     // Inicializar Firestore
         auth = FirebaseAuth.getInstance()                                                           // Inicializar Firebase Auth
+        googleSingIn = GoogleSingIn(this)
+
 
         binding = ActivityUserloginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -54,7 +60,8 @@ class UserLoginActivity : AppCompatActivity() {
             }
 
             RecordarPassword.setOnClickListener {
-                goToRecordarPassword()
+      //          startActivity(Intent(this, ResetPasswordActivity::class.java))
+             //   goToRecordarPassword()
 
             }
 
@@ -115,7 +122,6 @@ class UserLoginActivity : AppCompatActivity() {
         ) {
             val email = binding.userEmail.editText!!.text.toString().trim()
             val password = binding.userPassword.editText!!.text.toString().trim()
-
             loginWithEmailPassword(email, password)
         } else {
             DialogShow(this@UserLoginActivity,
@@ -132,7 +138,8 @@ class UserLoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
-                    Toast.makeText(this, "VAMOS A NUESTRA APP", Toast.LENGTH_SHORT).show()     // Login exitoso ( ELIMINAR )
+                    Toast.makeText(this, "VAMOS A NUESTRA APP", Toast.LENGTH_SHORT)
+                        .show()     // Login exitoso ( ELIMINAR )
 
                     // NOS VAMOS A NUESTRA APP
 
@@ -143,17 +150,23 @@ class UserLoginActivity : AppCompatActivity() {
                         "Usuario no registrado",
                         "Continuar",
                         null,
-                        null) {}
+                        null
+                    ) {}
                 }
             }
     }
 
-
 // Login con Google  -------------------------------------------------------------------------------
     private fun signInWithGoogle() {
-
-
-
+        CoroutineScope(Dispatchers.Main).launch {
+            if (googleSingIn.signIn()) {
+                val currentUser = FirebaseAuth.getInstance().currentUser!!
+                val db = FirebaseFirestore.getInstance()
+                val userCollection = db.collection("users")
+                userCollection.whereEqualTo("email", currentUser.email).get()
+                    .addOnSuccessListener { }
+            }
+        }
     }
 
 // Login con Apple  -------------------------------------------------------------------------------

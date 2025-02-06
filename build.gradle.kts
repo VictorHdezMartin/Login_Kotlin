@@ -3,8 +3,9 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
 
-    // Aplicamos el plugin de Google Services
-    id("com.google.gms.google-services") version "4.3.15"      // Usa la versión más reciente
+ // Add the dependency for the Google services Gradle plugin
+    id("com.google.gms.google-services") version "4.4.2" apply false     // Usa la versión más reciente
+
 }
 
 // build.gradle (Project)

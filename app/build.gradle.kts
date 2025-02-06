@@ -1,3 +1,5 @@
+import io.grpc.internal.SharedResourceHolder.release
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -47,11 +49,18 @@ android {
 dependencies {
 
 // dependencias de FireBase
-    implementation("com.google.firebase:firebase-bom:33.8.0")           // Import the BoM for the Firebase platform
+    implementation("com.google.firebase:firebase-bom:33.8.0")            // Import the BoM for the Firebase platform
     implementation("com.google.firebase:firebase-core:21.1.0")           // Firebase Core (Obligatorio para usar Firebase)
+
     implementation("com.google.firebase:firebase-analytics-ktx:21.0.0")  // Firebase Analytics
+ //   implementation("com.google.firebase:firebase-analytics-ktx")         // Firebase Analytics
+
     implementation("com.google.firebase:firebase-auth-ktx:21.1.0")       // Firebase Authentication
     implementation("com.google.firebase:firebase-firestore-ktx:24.6.0")  // Firebase Firestore
+
+// dependencias para Google
+    implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
+    implementation("androidx.credentials:credentials:1.0.0")
 
 // dependencias de Google Sign-In (para integración con Google)
     implementation("com.google.android.gms:play-services-auth:21.3.0")   // Google Sign-In (para integración con Google)
@@ -62,7 +71,8 @@ dependencies {
 
 // dependencia filament
     implementation(libs.filament.android)
-    implementation(libs.places)        // hay que copiarlo fichero: 'libs.versions.toml' -> filament-android = { group = "com.google.ar.sceneform", name = "filament-android", version.ref = "filamentAndroid" }
+    implementation(libs.places)
+    implementation(libs.googleid)        // hay que copiarlo fichero: 'libs.versions.toml' -> filament-android = { group = "com.google.ar.sceneform", name = "filament-android", version.ref = "filamentAndroid" }
                                        // para trabajar con gráficos 3D en Android
 
 // dependencias RETROFIT
