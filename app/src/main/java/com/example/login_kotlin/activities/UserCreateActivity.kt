@@ -1,13 +1,8 @@
 package com.example.login_kotlin.activities
 
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,6 +10,8 @@ import com.example.login_kotlin.R
 import com.example.login_kotlin.databinding.ActivityUsercreateBinding
 import com.example.login_kotlin.utils.DatePickerShow
 import com.example.login_kotlin.utils.ImagePicker
+import com.example.login_kotlin.utils.PasswordConstants
+import com.example.login_kotlin.utils.showPasswordParametres
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -26,14 +23,6 @@ class UserCreateActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
-    // private val FILE_REQUEST_CODE = 1001                            // para poder acceder a ficheros
-
-    // Definir el ActivityResultLauncher para manejar el resultado del selector de archivos
-    ///   private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-    //       uri?.let { loadImageIntoImageView(it) }
-    //   }
-
-    private val maxPassword = 20
     private lateinit var imagePicker: ImagePicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,17 +39,23 @@ class UserCreateActivity : AppCompatActivity() {
 
         with(binding) {
 
-            // limitamos el tamaño encaracteres de la contraseña
-            userPasswordCreate.counterMaxLength = maxPassword
-            userPasswordCreate.editText!!.filters =
-                arrayOf(InputFilter.LengthFilter(maxPassword))
+         // limitamos el tamaño encaracteres de la contraseña
+            userPasswordCreate.counterMaxLength = PasswordConstants.MAX_PASSWORD
+            userPasswordCreate.editText!!.filters = arrayOf(InputFilter.LengthFilter(PasswordConstants.MAX_PASSWORD))
 
-            // limitamos el tamaño de caracteres del repetir contraseña
-            userPasswordRepeat.counterMaxLength = maxPassword
-            userPasswordRepeat.editText!!.filters =
-                arrayOf(InputFilter.LengthFilter(maxPassword))
+         // limitamos el tamaño de caracteres del repetir contraseña
+            userPasswordRepeat.counterMaxLength = PasswordConstants.MAX_PASSWORD
+            userPasswordRepeat.editText!!.filters = arrayOf(InputFilter.LengthFilter(PasswordConstants.MAX_PASSWORD))
 
             userNacimiento.editText!!.textSize = 12F
+
+            InfPassword1.setOnClickListener {
+                showPasswordParametres(this@UserCreateActivity)
+            }
+
+            InfPassword2.setOnClickListener {
+                showPasswordParametres(this@UserCreateActivity)
+            }
 
             datePicker.setOnClickListener {
                 DatePickerShow(this@UserCreateActivity, userNacimiento.editText!!)
